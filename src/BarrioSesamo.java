@@ -4,10 +4,10 @@ public class BarrioSesamo {
     private final int MAX_VECINOS;
 
     public BarrioSesamo(int num_max_vecinos) {
-        if (num_max_vecinos > 0) {
+        if (num_max_vecinos >= 0) {
             MAX_VECINOS = num_max_vecinos;
         } else  {
-            MAX_VECINOS = 10; // Por defecto si se introduce un numero menor que 0 o 0.
+            MAX_VECINOS = 10; // Por defecto si se introduce un numero menor que 0
         }
     }
 
@@ -34,7 +34,16 @@ public class BarrioSesamo {
         return primerHuecoLibre;
     }
     
+    public boolean registrarHabitante(Habitante nuevoVecino) {
+        boolean habitanteRegistrado = false;
+        int posicion = buscarPrimerHuecoLibre();
 
+        if (posicion >= 0 && posicion <= MAX_VECINOS) {
+            habitantes[posicion] = nuevoVecino;
+            habitanteRegistrado = true;
+        }
+        return habitanteRegistrado;
+    }
 
 
 }
